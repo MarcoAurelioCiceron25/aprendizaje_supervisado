@@ -1,22 +1,28 @@
 from flask import Flask, request, jsonify
-import joblib
-import numpy as np
+import pickle
+import pandas as pd
 
-# Cargar el modelo previamente entrenado
-modelo = joblib.load("models/modelo_entrenado.joblib")
-
-# Inicializar la aplicación Flask
 app = Flask(__name__)
 
+# Cargar el modelo guardado
+with open('pipeline.pkl', 'rb') as archivo_modelo:
+    modelo = pickle.load(archivo_modelo)
+
 @app.route('/predecir', methods=['POST'])
-def predict():
-    try:
-        data = request.get_json(force=True)
-        input_data = np.array(data['input']).reshape(1, -1)
-        prediccion = modelo.predict(input_data)
-        return jsonify({'prediccion': int(prediccion[0])})
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+def predecir():
+    # Obtener los datos de la solicitud
+    data = request.get_json()
+
+    # Crear un DataFrame de pandas a partir del JSON
+    input_data = pd.DataFrame([data])
+
+    # Hacer la predicción usando el modelo que tiene el pipeline que hará la transformación
+    prediccion = modelo.predict(input_data)
+    
+    # Devolver la predicción como JSON
+    output = {'Survived': int(prediccion[0])}
+    
+    return jsonify(output)
 
 if __name__ == '__main__':
     app.run(debug=True)
