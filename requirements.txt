@@ -1,29 +1,40 @@
-blinker==1.9.0
-click==8.2.1
-contourpy==1.3.3
-cycler==0.12.1
-Flask==3.1.2
-fonttools==4.59.2
-itsdangerous==2.2.0
-Jinja2==3.1.6
-joblib==1.5.2
-kiwisolver==1.4.9
-MarkupSafe==3.0.2
-matplotlib==3.8.0
-numpy==1.26.0
-packaging==25.0
+# Núcleo científico
+numpy==1.26.4
+scipy==1.11.4
 pandas==2.2.0
+scikit-learn==1.4.0
+matplotlib==3.8.0
+seaborn==0.13.2
+
+# Machine learning avanzado
+xgboost==2.0.3
+lightgbm==4.3.0
+
+# Web app con Flask
+Flask==3.1.2
+Werkzeug==3.1.3
+Jinja2==3.1.6
+itsdangerous==2.2.0
+click==8.2.1
+blinker==1.9.0
+
+# Visualización y utilidades
 pillow==11.3.0
 pyparsing==3.2.3
 python-dateutil==2.9.0.post0
-pytz==2025.2
-scikit-learn==1.4.0
-scipy==1.16.2
-seaborn
-jupyterlab
-xgboost
-lightgbm
-six==1.17.0
+kiwisolver==1.4.9
+cycler==0.12.1
+fonttools==4.59.2
+
+# Utilidades y compatibilidad
+joblib==1.5.2
 threadpoolctl==3.6.0
+packaging==25.0
+six==1.17.0
 tzdata==2025.2
-Werkzeug==3.1.3
+pytz==2025.2
+
+# Entorno interactivo
+notebook==7.4.5
+jupyterlab==4.4.5
+
